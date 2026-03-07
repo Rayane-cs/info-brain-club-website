@@ -289,8 +289,9 @@ window.addEventListener("scroll", () => {
                 title: "Deep Learning Workshop Series",
                 event_date: "March 15, 2026",
                 category: "Training",
+                location: "Room 101",
                 image_url: "https://images.unsplash.com/photo-1591453089816-0fbb971b454c?auto=format&w=800",
-                regis_user: 12,
+                regis_user: 0,
                 capacity: 30
             },
             {
@@ -298,28 +299,20 @@ window.addEventListener("scroll", () => {
                 title: "AI Ethics Roundtable",
                 event_date: "March 22, 2026",
                 category: "Ethics",
+                location: "Room 002",
                 image_url: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&w=800",
-                regis_user: 8,
+                regis_user: 0,
                 capacity: 20
             },
             {
                 id: 3,
-                title: "Startup Pitch Competition",
-                event_date: "April 05, 2026",
-                category: "Innovation",
-                image_url: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&w=800",
-                regis_user: 15,
-                capacity: 50
+                title: "Ai Workshop",
+                event_date: "January 28, 2026",
+                category: "Workshop",
+                image_url: "https://www.createit.com/wp-content/uploads/2026/02/aitrainigng.webp",
+                regis_user: 0,
+                capacity: 30
             },
-            {
-                id: 4,
-                title: "Research Symposium 2026",
-                event_date: "April 12, 2026",
-                category: "Research",
-                image_url: "https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&w=800",
-                regis_user: 45,
-                capacity: 100
-            }
         ];
         
         if (eventsEmpty) eventsEmpty.classList.add('hidden');

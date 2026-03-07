@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | AI House UHBC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/css/homepage.css">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="/pages/homepage.html" class="logo">
+                    <img src="/assets/aihouse_logo.svg" alt="AI House Logo" class="logo-header">
+                </a>
+
+                <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <ul class="nav-links">
+                    <li><a href="/pages/homepage.html">Home</a></li>
+                    <li><a href="/pages/about.html">About us</a></li>
+                    <li><a href="/pages/projects.html">Projects</a></li>
+                    <li><a href="/pages/events.html">Events</a></li>
+                    <li><a href="/pages/contact.html">Contact</a></li>
+                    <li><a href="/pages/admin.html" id="active-nav-link">Admin</a></li>
+                </ul>
+
+                <div id="header-actions">
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="admin-container">
+        <div class="admin-header">
+            <div>
+                <h1 class="page-title">Admin Dashboard</h1>
+                <p class="page-subtitle">Manage AI House UHBC platform</p>
+            </div>
+            <a href="/pages/profile.html" class="profile-btn">Profile</a>
+        </div>
+
+        <div class="admin-stats-grid">
+            <div class="stat-card">
+                <h3>Total Users</h3>
+                <div class="stat-value" id="stat-users">...</div>
+            </div>
+            <div class="stat-card">
+                <h3>Admins</h3>
+                <div class="stat-value" id="stat-admins">...</div>
+            </div>
+        </div>
+
+        <div class="admin-content">
+            <div class="admin-panel">
+                <div class="panel-header">
+                    <h2>Registered Users</h2>
+                </div>
+                <div class="table-wrapper">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>User</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Is Admin</th>
+                                <th>Joined</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminUsersTableBody">
+                            <tr>
+                                <td colspan="6" class="text-center">Loading users...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="admin-panel" style="margin-top: 32px;">
+                <div class="panel-header">
+                    <h2>Events</h2>
+                    <button id="toggleEventFormBtn" class="btn btn-primary btn-sm" style="width:40%; padding: 6px 100px; font-size: 0.75rem;">
+                        Add Event
+                    </button>
+                </div>
+
+                <div id="eventFormWrapper" class="event-form-wrapper" style="display: none;">
+                    <form id="eventForm" class="event-form">
+                        <div class="event-form-row">
+                            <div class="event-form-field">
+                                <label for="eventTitle">Title</label>
+                                <input type="text" id="eventTitle" name="title" required />
+                            </div>
+                            <div class="event-form-field">
+                                <label for="eventCategory">Category</label>
+                                <input type="text" id="eventCategory" name="category" placeholder="Training, Workshop..." />
+                            </div>
+                        </div>
+                        <div class="event-form-row">
+                            <div class="event-form-field">
+                                <label for="eventDate">Date</label>
+                                <input type="date" id="eventDate" name="event_date" required />
+                            </div>
+                            <div class="event-form-field">
+                                <label for="eventTime">Time</label>
+                                <input type="time" id="eventTime" name="event_time" />
+                            </div>
+                            <div class="event-form-field">
+                                <label for="eventCapacity">Capacity</label>
+                                <input type="number" id="eventCapacity" name="capacity" min="1" placeholder="30" />
+                            </div>
+                        </div>
+                        <div class="event-form-row">
+                            <div class="event-form-field">
+                                <label for="eventLocation">Location</label>
+                                <input type="text" id="eventLocation" name="location" placeholder="Room A1 B12" />
+                            </div>
+                        </div>
+                        <div class="event-form-row">
+                            <div class="event-form-field">
+                                <label for="eventImageUrl">Image URL</label>
+                                <input type="url" id="eventImageUrl" name="image_url" placeholder="https://..." />
+                            </div>
+                        </div>
+                        <div class="event-form-row">
+                            <div class="event-form-field">
+                                <label for="eventDescription">Description</label>
+                                <textarea id="eventDescription" name="description" rows="2"
+                                          placeholder="Short description of the event"></textarea>
+                            </div>
+                        </div>
+                        <div class="event-form-actions">
+                            <button type="submit" class="btn btn-primary btn-sm">Save Event</button>
+                            <button type="button" id="cancelEventFormBtn" class="btn btn-secondary btn-sm">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Category</th>
+                                <th>Capacity</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminEventsTableBody">
+                            <tr>
+                                <td colspan="6" class="text-center">Loading events...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/js/utils.js"></script>
+    <script src="/js/navbar.js"></script>
+    <script src="/js/admin.js"></script>
+</body>
+
+</html>

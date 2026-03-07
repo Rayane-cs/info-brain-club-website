@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events &amp; Agenda | AI House UHBC</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400 ;500;600;700&family=Montserrat:wght@600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/css/homepage.css">
+    <link rel="stylesheet" href="/css/events.css">
+</head>
+
+<body class="has-page-loader">
+    <div id="page-loader" class="page-loader" aria-hidden="true">
+        <div class="loader-ring"></div>
+        <p class="loader-text">Loading events...</p>
+    </div>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="/pages/homepage.html" class="logo">
+                    <img src="/assets/aihouse_logo.svg" alt="AI House Logo" class="logo-header">
+                </a>
+
+                <button class="nav-toggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <ul class="nav-links">
+                    <li><a href="/pages/homepage.html">Home</a></li>
+                    <li><a href="/pages/about.html">About us</a></li>
+                    <li><a href="/pages/projects.html">Projects</a></li>
+                    <li><a href="/pages/events.html" id="active-nav-link">Events</a></li>
+                    <li><a href="/pages/contact.html">Contact</a></li>
+                    <li><a href="/pages/profile.html" id="dynamic-nav-link">Profile</a></li>
+                </ul>
+                <div id="header-actions"></div>
+                <img src="/assets/uhbc_logo.svg" alt="UHBC Logo" class="logo-header">
+            </div>
+        </nav>
+    </header>
+
+    <main class="events-main page-fade" aria-labelledby="events-title">
+        <div class="page">
+            <header class="header">
+                <div class="hero-content">
+                    <h1 id="events-title">Events & Agenda</h1>
+                    <p>
+                        Stay updated with our upcoming events at
+                    </p>
+                    <div class="hero-underline"></div>
+                </div>
+            </header>
+
+            <section class="bottom-section">
+                <header class="section-header">
+                    <h2>Upcoming Events</h2>
+                </header>
+
+                <div class="upcoming-grid">
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-col logo">
+            <img src="/assets/aihouse_logo_white.svg" alt="AI House Logo" class="logo-footer">
+        </div>
+        <div class="footer-col footer-quick">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+                <li><a href="/pages/homepage.html">- Home</a></li>
+                <li><a href="/pages/contact.html">- Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-col footer-contact">
+            <h3>Contact Us</h3>
+            <p>
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                    <circle cx="12" cy="10" r="3" />
+                </svg>
+                Chlef, Algeria
+            </p>
+            <p>
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
+                </svg>
+                aihouse@univ-chlef.dz
+            </p>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/people/AI-HOUSE-UHBC/61585214978330/ " aria-label="Facebook">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/aihouseuhbc/ " aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                        <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js "
+        crossorigin="anonymous"></script>
+    <script src="/js/utils.js"></script>
+    <script src="/js/navbar.js"></script>
+    <script src="/js/page-loader.js"></script>
+    <script src="/js/events.js"></script>
+</body>
+
+</html>

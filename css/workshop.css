@@ -1,0 +1,389 @@
+:root {
+  --accent: #f97316;
+  --accent-dark: #ea580c;
+  --bg-page: #ffffff;
+  --bg-card: #e8f5e9;
+  --text-main: #1f2937;
+  --text-muted: #4b5563;
+  --progress-track: #e5e7eb;
+  --shadow-card: 0 18px 38px rgba(15, 23, 42, 0.12);
+  --radius-xl: 15px;
+  --radius-md: 12px;
+  --radius-pill: 999px;
+  --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-main);
+  background: var(--bg-page);
+  color: var(--text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page-wrap {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem 3rem;
+}
+
+.page {
+  width: 100%;
+  max-width: 720px;
+  flex-shrink: 0;
+}
+
+.event-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.85rem;
+  color: #4b5563;
+  text-decoration: none;
+  margin-bottom: 8px;
+}
+
+.event-back-link:hover {
+  text-decoration: underline;
+  color: #111827;
+}
+
+.workshop-card {
+  width: 100%;
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.workshop-header {
+  padding: 1.5rem 1.5rem 0;
+  text-align: center;
+}
+
+.workshop-kicker {
+  display: inline-block;
+  margin-bottom: 0.35rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  background: rgba(0, 102, 51, 0.06);
+  color: #006633;
+  font-weight: 600;
+}
+
+.workshop-title {
+  font-size: 2rem;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+.workshop-title-line {
+  width: 200px;
+  height: 4px;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+  margin: 0.5rem auto 1.25rem;
+}
+
+.workshop-hero {
+  margin: 0 -0.5rem;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  overflow: hidden;
+  background: #d4e5d7;
+  min-height: 220px;
+  position: relative;
+}
+
+.workshop-hero img {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 220px;
+  object-fit: cover;
+}
+
+.hero-placeholder {
+  display: none;
+  position: absolute;
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.hero-placeholder.visible {
+  display: flex;
+}
+
+.workshop-body {
+  padding: 1.5rem 1.5rem 1.75rem;
+}
+
+.workshop-info-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.info-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-main);
+}
+
+.info-icon {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.section {
+  padding: 1.25rem 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.section:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.section-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #017f02;
+}
+
+.section-text {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.section-subtitle {
+  font-size: 0.88rem;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+}
+
+.agenda-list {
+  list-style: none;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.agenda-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-main);
+}
+
+.agenda-check {
+  color: var(--accent);
+  font-size: 0.95rem;
+  margin-top: 1px;
+  flex-shrink: 0;
+}
+
+.seats-section {
+  padding-bottom: 0.5rem;
+}
+
+.seats-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+  margin-bottom: 0.6rem;
+  font-size: 0.9rem;
+}
+
+.seats-label {
+  color: var(--text-main);
+}
+
+.seats-values {
+  font-weight: 500;
+}
+
+.seats-progress-bar {
+  width: 100%;
+  height: 10px;
+  border-radius: var(--radius-pill);
+  background: var(--progress-track);
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+}
+
+.seats-progress-fill {
+  height: 100%;
+  width: 50%;
+  min-width: 0;
+  background: var(--accent);
+  border-radius: inherit;
+  transition: width 0.3s ease;
+}
+
+.success-msg {
+  font-size: 0.9rem;
+  color: #0d9668;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  background: #ecfdf5;
+  border-radius: 8px;
+  border: 1px solid #a7f3d0;
+}
+
+.primary-btn {
+  display: block;
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 0.85rem 1.5rem;
+  border-radius: var(--radius-md);
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  font-family: inherit;
+  box-shadow: 0 4px 14px rgba(249, 115, 22, 0.4);
+  transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+.primary-btn:hover {
+  background: var(--accent-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(249, 115, 22, 0.5);
+}
+
+.primary-btn:active {
+  transform: translateY(0);
+}
+
+.primary-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.primary-btn:disabled {
+  background: #9ca3af;
+  box-shadow: none;
+  cursor: not-allowed;
+  opacity: 0.85;
+  transform: none;
+}
+
+@media (min-width: 1200px) {
+  .page-wrap {
+    padding: 2.5rem 2rem 4rem;
+  }
+
+  .page {
+    max-width: 960px;
+  }
+
+  .workshop-title {
+    font-size: 2.5rem;
+  }
+
+  .workshop-title-line {
+    width: 280px;
+  }
+
+  .workshop-header {
+    padding: 2rem 2rem 0;
+  }
+
+  .workshop-hero {
+    min-height: 320px;
+  }
+
+  .workshop-hero img {
+    min-height: 320px;
+  }
+
+  .workshop-body {
+    padding: 2rem 2rem 2.5rem;
+  }
+
+  .section-title {
+    font-size: 1.1rem;
+  }
+
+  .section-text,
+  .agenda-list li,
+  .seats-row {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .page-wrap {
+    padding: 1.25rem 0.75rem 2rem;
+  }
+
+  .workshop-card {
+    border-radius: 12px;
+  }
+
+  .workshop-header {
+    padding: 1.25rem 1rem 0;
+  }
+
+  .workshop-title {
+    font-size: 1.75rem;
+  }
+
+  .workshop-hero {
+    min-height: 180px;
+  }
+
+  .workshop-hero img {
+    min-height: 180px;
+  }
+
+  .workshop-body {
+    padding: 1.25rem 1rem 1.5rem;
+  }
+
+  .workshop-info-row {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .info-item {
+    width: 100%;
+  }
+}
+

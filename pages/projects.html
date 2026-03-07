@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | AI House UHBC</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/css/homepage.css">
+    <link rel="stylesheet" href="/css/projects-main.css">
+    <link rel="stylesheet" href="/css/projects-section.css">
+    <link rel="stylesheet" href="/css/projects-component.css">
+</head>
+
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="/pages/homepage.html" class="logo">
+                    <img src="/assets/aihouse_logo.svg" alt="AI House Logo" class="logo-header">
+                </a>
+                <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="/pages/homepage.html">Home</a></li>
+                    <li><a href="/pages/about.html">About us</a></li>
+                    <li><a href="/pages/projects.html" id="active-nav-link">Projects</a></li>
+                    <li><a href="/pages/events.html">Events</a></li>
+                    <li><a href="/pages/contact.html">Contact</a></li>
+                    <li><a href="/pages/profile.html" id="dynamic-nav-link">Profile</a></li>
+                </ul>
+                <div id="header-actions"></div>
+                <img src="/assets/uhbc_logo.svg" alt="UHBC Logo" class="logo-header">
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="projects" id="projects" style="padding: 80px 0 60px;">
+            <div class="container">
+                <h2 class="section-title">Projects</h2>
+                <p class="section-description">Explore student projects and faculty research at AI House.</p>
+
+                <div class="tabs">
+                    <button class="tab-button active" data-tab="students">Students</button>
+                    <button class="tab-button" data-tab="research">Research</button>
+                </div>
+
+                <div class="tab-content active" id="students-tab">
+                    <div class="filters-bar">
+                        <input type="text" id="search-input" class="filters__search" placeholder="Search projects...">
+                        <select id="field-filter" class="filters__select" title="Filter by field">
+                            <option value="">All Fields</option>
+                            <option value="AI">AI/Robotics</option>
+                            <option value="BioTech">BioTech</option>
+                            <option value="Energy">Energy</option>
+                        </select>
+                        <select id="status-filter" class="filters__select" title="Filter by status">
+                            <option value="">All Status</option>
+                            <option value="Ongoing">Ongoing</option>
+                            <option value="Completed">Completed</option>
+                            <option value="Archived">Archived</option>
+                        </select>
+                    </div>
+
+                    <div class="projects-grid" id="projects-grid">
+                        <div class="project-card" data-field="AI" data-status="Ongoing">
+                            <div class="card__header">
+                                <h3 class="card__title">Autonomous Drone Swarm Coordination</h3>
+                                <span class="badge badge--ongoing">Ongoing</span>
+                            </div>
+                            <p class="card__field">AI/Robotics</p>
+                            <p class="card__team">Team: Sarah Chen, Mike Ross</p>
+                        </div>
+                        <div class="project-card" data-field="BioTech" data-status="Completed">
+                            <div class="card__header">
+                                <h3 class="card__title">Biodegradable Packaging from Seaweed</h3>
+                                <span class="badge badge--completed">Completed</span>
+                            </div>
+                            <p class="card__field">BioTech</p>
+                            <p class="card__team">Team: James Wilson, Ana Garcia</p>
+                        </div>
+                        <div class="project-card" data-field="Energy" data-status="Ongoing">
+                            <div class="card__header">
+                                <h3 class="card__title">Solar Panel Efficiency Optimization</h3>
+                                <span class="badge badge--ongoing">Ongoing</span>
+                            </div>
+                            <p class="card__field">Energy</p>
+                            <p class="card__team">Team: John Doe, Jane Smith</p>
+                        </div>
+                        <div class="project-card" data-field="AI" data-status="Archived">
+                            <div class="card__header">
+                                <h3 class="card__title">Legacy AI Project</h3>
+                                <span class="badge badge--archived">Archived</span>
+                            </div>
+                            <p class="card__field">AI</p>
+                            <p class="card__team">Team: Ali, Noor</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="research-tab">
+                    <div class="research-grid">
+                        <div class="publication-card">
+                            <div class="pub__content">
+                                <h3 class="pub__title">Quantum Machine Learning for Drug Discovery</h3>
+                                <p class="pub__author">— Dr. Elena Vostok, 2024</p>
+                            </div>
+                            <div class="pub__actions">
+                                <button class="btn btn--outline" onclick="alert('PDF downloaded (demo)')">PDF</button>
+                                <button class="btn btn--primary collaborate-btn" data-author="Dr. Elena Vostok"
+                                    data-title="Quantum Machine Learning for Drug Discovery">Collaborate</button>
+                                <button class="btn-copy"
+                                    data-citation="Elena Vostok, 2024, 'Quantum Machine Learning for Drug Discovery'">Copy
+                                    citation</button>
+                            </div>
+                        </div>
+                        <div class="publication-card">
+                            <div class="pub__content">
+                                <h3 class="pub__title">Sustainable Urban Microgrids</h3>
+                                <p class="pub__author">— Prof. James Miller, 2023</p>
+                            </div>
+                            <div class="pub__actions">
+                                <button class="btn btn--outline" onclick="alert('PDF downloaded (demo)')">PDF</button>
+                                <button class="btn btn--primary collaborate-btn" data-author="Prof. James Miller"
+                                    data-title="Sustainable Urban Microgrids">Collaborate</button>
+                                <button class="btn-copy"
+                                    data-citation="James Miller, 2023, 'Sustainable Urban Microgrids'">Copy
+                                    citation</button>
+                            </div>
+                        </div>
+                        <div class="publication-card">
+                            <div class="pub__content">
+                                <h3 class="pub__title">AI in Climate Modeling</h3>
+                                <p class="pub__author">— Dr. Alan Turing, 2025</p>
+                            </div>
+                            <div class="pub__actions">
+                                <button class="btn btn--outline" onclick="alert('PDF downloaded (demo)')">PDF</button>
+                                <button class="btn btn--primary collaborate-btn" data-author="Dr. Alan Turing"
+                                    data-title="AI in Climate Modeling">Collaborate</button>
+                                <button class="btn-copy"
+                                    data-citation="Alan Turing, 2025, 'AI in Climate Modeling'">Copy citation</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="showcase" id="showcase" style="padding: 60px 0 80px;">
+            <div class="container">
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="showcase-grid">
+                    <div class="showcase-card">
+                        <div class="showcase__image"
+                            style="background-image: url('https://picsum.photos/300/200?random=1');"></div>
+                        <div class="showcase__overlay">
+                            <h3>Neural Interface Prototype</h3>
+                            <p>Non-invasive BCI for assistive communication</p>
+                            <div class="showcase__buttons">
+                                <a href="#" class="btn btn--primary">Live Demo</a>
+                                <a href="#" class="btn btn--secondary">Code</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="showcase-card">
+                        <div class="showcase__image"
+                            style="background-image: url('https://picsum.photos/300/200?random=2');"></div>
+                        <div class="showcase__overlay">
+                            <h3>Carbon Capture Dashboard</h3>
+                            <p>Real-time monitoring for industrial emissions</p>
+                            <div class="showcase__buttons">
+                                <a href="#" class="btn btn--primary">Live Site</a>
+                                <a href="#" class="btn btn--secondary">Docs</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="showcase-card">
+                        <div class="showcase__image"
+                            style="background-image: url('https://picsum.photos/300/200?random=3');"></div>
+                        <div class="showcase__overlay">
+                            <h3>AI for Drug Discovery</h3>
+                            <p>Deep learning models for molecule generation</p>
+                            <div class="showcase__buttons">
+                                <a href="#" class="btn btn--primary">Demo</a>
+                                <a href="#" class="btn btn--secondary">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="collabModal" class="modal">
+        <div class="modal__content">
+            <span class="modal__close">&times;</span>
+            <h2>Collaboration Request</h2>
+            <form id="collabForm">
+                <label for="collab-name">Name:</label>
+                <input type="text" id="collab-name" name="name" required>
+                <label for="collab-email">Email:</label>
+                <input type="email" id="collab-email" name="email" required>
+                <label for="collab-message">Message:</label>
+                <textarea id="collab-message" name="message" required></textarea>
+                <button type="submit" class="btn btn--primary">Send Request</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-col logo">
+            <img src="/assets/aihouse_logo_white.svg" alt="AI House Logo" class="logo-footer" loading="lazy">
+        </div>
+        <div class="footer-col footer-quick">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+                <li><a href="/pages/about.html">- About AI House</a></li>
+                <li><a href="/pages/projects.html">- Our Projects</a></li>
+                <li><a href="/pages/events.html">- Events Calendar</a></li>
+                <li><a href="/pages/contact.html">- Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-col footer-contact">
+            <h3>Contact Us</h3>
+            <p>
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                    <circle cx="12" cy="10" r="3" />
+                </svg>
+                Chlef, Algeria
+            </p>
+            <p>
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
+                </svg>
+                aihouse@univ-chlef.dz
+            </p>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/people/AI-HOUSE-UHBC/61585214978330/" aria-label="Facebook"
+                    target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/aihouseuhbc/" aria-label="Instagram" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                        <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"
+        crossorigin="anonymous"></script>
+    <script src="/js/utils.js"></script>
+    <script src="/js/navbar.js"></script>
+    <script src="/js/projects-main.js"></script>
+    <script src="/js/projects-tabs.js"></script>
+</body>
+
+</html>

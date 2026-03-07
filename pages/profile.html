@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile | AI House UHBC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/css/homepage.css">
+    <link rel="stylesheet" href="/css/profile.css">
+</head>
+
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="/pages/homepage.html" class="logo">
+                    <img src="/assets/aihouse_logo.svg" alt="AI House Logo" class="logo-header">
+                </a>
+
+                <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <ul class="nav-links">
+                    <li><a href="/pages/homepage.html">Home</a></li>
+                    <li><a href="/pages/about.html">About us</a></li>
+                    <li><a href="/pages/projects.html">Projects</a></li>
+                    <li><a href="/pages/events.html">Events</a></li>
+                    <li><a href="/pages/contact.html">Contact</a></li>
+                    <li><a href="/pages/profile.html" id="dynamic-nav-link">Profile</a></li>
+                </ul>
+
+                <div id="header-actions">
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="profile-container">
+        <div class="profile-header">
+            <h1 class="page-title">My Profile</h1>
+            <p class="page-subtitle">Manage your account and settings</p>
+        </div>
+
+        <div class="profile-card">
+            <div class="profile-avatar-section">
+                <div class="avatar-wrapper">
+                    <img id="profile-avatar" src="/assets/uhbc_logo.svg" alt="Avatar">
+                    <div class="avatar-initials" id="profile-initials"></div>
+                </div>
+            </div>
+
+            <div class="profile-info-section" id="profile-display-view">
+                <div class="info-group">
+                    <label>Full Name</label>
+                    <div class="info-value" id="profile-fullname">Loading...</div>
+                </div>
+                <div class="info-group">
+                    <label>Username</label>
+                    <div class="info-value" id="profile-username">Loading...</div>
+                </div>
+                <div class="info-group">
+                    <label>Email</label>
+                    <div class="info-value" id="profile-email">Loading...</div>
+                </div>
+                <div class="info-group">
+                    <label>Role</label>
+                    <div class="info-value"><span class="role-badge" id="profile-role">...</span></div>
+                </div>
+                <div style="grid-column: 1 / -1; margin-top: 15px;">
+                    <button class="btn btn-secondary w-full" id="edit-profile-btn">Edit Profile</button>
+                </div>
+            </div>
+
+            <div class="profile-info-section hidden" id="profile-edit-view" style="display: none;">
+                <form id="edit-profile-form" style="width: 100%; display: grid; grid-template-columns: 1fr; gap: 20px;">
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <label for="edit-fullname">Full Name</label>
+                        <input type="text" id="edit-fullname" class="form-control" required
+                            style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid var(--border-color); background: rgba(255,255,255,0.05); color: var(--text-dark);">
+                    </div>
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <label for="edit-username">Username</label>
+                        <input type="text" id="edit-username" class="form-control" required
+                            style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid var(--border-color); background: rgba(255,255,255,0.05); color: var(--text-dark);">
+                    </div>
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <label for="edit-avatar">Avatar URL</label>
+                        <input type="text" id="edit-avatar" class="form-control"
+                            placeholder="https://example.com/avatar.jpg"
+                            style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid var(--border-color); background: rgba(255,255,255,0.05); color: var(--text-dark);">
+                    </div>
+                    <div style="grid-column: 1 / -1; display: flex; gap: 10px; margin-top: 15px;">
+                        <button type="button" class="btn btn-secondary" id="cancel-edit-btn"
+                            style="flex: 1;">Cancel</button>
+                        <button type="submit" class="btn btn-primary" id="save-profile-btn" style="flex: 1;">Save
+                            Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/js/utils.js"></script>
+    <script src="/js/navbar.js"></script>
+    <script src="/js/profile.js"></script>
+</body>
+
+</html>

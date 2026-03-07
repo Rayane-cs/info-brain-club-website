@@ -28,10 +28,11 @@ body {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
+    align-items: center;
 }
 
 .section-title {
-    color: var(--university-green);
+    color: var(--innovation-orange);
     font-weight: 700;
     margin-bottom: 0.5rem;
     font-size: 2.5rem;
@@ -44,6 +45,7 @@ body {
     margin-bottom: 2rem;
     font-size: 1.1rem;
     opacity: 0.8;
+    text-align: center;
 }
 
 html {
@@ -55,3 +57,12 @@ html {
     background: #025e3083;
     font-weight: 600;
 }   
+
+.hero-underline {
+    width: 420px;
+    max-width: 95%;
+    height: 4px;
+    background: var(--primary-orange);
+    margin: 10px auto 10px;
+    border-radius: 2px;
+}

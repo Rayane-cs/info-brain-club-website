@@ -32,7 +32,7 @@
   const grid = document.getElementById('newsGrid');
   if (!grid) return;
 
-  const NEWS_API = 'http://173.249.28.246:8090/api/v1/getinfo';
+  const NEWS_API = 'https://173.249.28.246:8090/api/v1/getinfo';
   const NEWS_BASE = 'https://www.univ-chlef.dz/ar/?p=';
 
   try {

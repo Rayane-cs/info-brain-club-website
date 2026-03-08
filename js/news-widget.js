@@ -1,6 +1,6 @@
 /**
  * UHBC News Widget
- * Fetches from http://173.249.28.246:8090/api/v1/getinfo
+ * Fetches from https://173.249.28.246:8090/api/v1/getinfo
  * and renders news cards. Each item links to https://www.univ-chlef.dz/ar/?p={id}
  *
  * Usage:
@@ -9,7 +9,7 @@
  *   <script>NewsWidget.render('#news-widget');</script>
  */
 const NewsWidget = (() => {
-    const API_URL = 'http://173.249.28.246:8090/api/v1/getinfo';
+    const API_URL = 'https://173.249.28.246:8090/api/v1/getinfo';
     const POST_URL = (id) => `https://www.univ-chlef.dz/ar/?p=${id}`;
 
     // ── Skeleton loader HTML ──────────────────────────────────

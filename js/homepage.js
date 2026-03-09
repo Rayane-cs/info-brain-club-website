@@ -32,13 +32,33 @@
   const grid = document.getElementById('newsGrid');
   if (!grid) return;
 
-  const NEWS_API = 'http://173.249.28.246:8090/api/v1/getinfo';
+  // Strategy 1: same-origin proxy path (avoids mixed-content + CORS entirely)
+  const NEWS_API_PROXY  = '/api/v1/getinfo';
+  // Strategy 2: direct call (works only if server sends CORS headers and page is HTTP)
+  const NEWS_API_DIRECT = 'http://173.249.28.246:8090/api/v1/getinfo';
   const NEWS_BASE = 'https://www.univ-chlef.dz/ar/?p=';
 
+  async function fetchNews() {
+    // Try the same-origin proxy first — no mixed-content, no CORS issue
+    try {
+      const res = await fetch(NEWS_API_PROXY, {
+        signal: AbortSignal.timeout(8000),
+      });
+      if (res.ok) return res.json();
+    } catch (_) { /* proxy not configured, fall through */ }
+
+    // Fall back to direct call with explicit CORS mode
+    const res = await fetch(NEWS_API_DIRECT, {
+      mode: 'cors',
+      headers: { 'Accept': 'application/json' },
+      signal: AbortSignal.timeout(8000),
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return res.json();
+  }
+
   try {
-    const res = await fetch(NEWS_API, { signal: AbortSignal.timeout(8000) });
-    if (!res.ok) throw new Error('API error');
-    const { posts } = await res.json();
+    const { posts } = await fetchNews();
 
     if (!posts?.length) {
       grid.innerHTML = '<p class="news-error">No news available at the moment.</p>';

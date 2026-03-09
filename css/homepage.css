@@ -106,15 +106,10 @@ button { font-family: inherit; cursor: pointer; }
 
 .nav-links a:hover,
 .nav-links a.active,
-#active-nav-link {
-  color: var(--green);
-  background: rgba(0,102,51,0.08);
-}
 
 #active-nav-link {
-  color: rgb(206,230,208);
-  background: #025e3083;
-  font-weight: 600;
+  color: white;
+  background: #025e30ad;
 }
 
 #header-actions { display: flex; align-items: center; gap: 0.75rem; }
@@ -703,6 +698,7 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: rotate(-45deg) translat
   z-index: 99999;
   box-shadow: 0 8px 32px rgba(0,0,0,0.2);
   animation: ntIn 0.3s cubic-bezier(0.34,1.56,0.64,1) forwards;
+
 }
 
 .nt-icon { flex-shrink: 0; display: flex; }
@@ -778,6 +774,7 @@ body.page-loaded .page-fade { opacity: 1; transform: translateY(0); }
     display: none;
     animation: navSlideDown 0.3s ease;
     border: 1px solid var(--border);
+    gap: 20px;
     z-index: 1999;
   }
   .nav-links.active { display: flex; }

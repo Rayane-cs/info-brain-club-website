@@ -331,54 +331,6 @@ body {
     font-weight: 600;
 }
 
-.footer { 
-    background: black; 
-    color: var(--text-light); 
-    padding: 50px 8% 40px; 
-    display: grid; 
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 40px; 
-    position: relative; 
-} 
-
-.footer > * { position: relative; z-index: 2; }
-
-.footer-col { display: flex; flex-direction: column; gap: 10px; }
-
-.footer-col h3 { 
-    font-family: 'Montserrat', sans-serif; 
-    margin-bottom: 20px; 
-    font-size: 1rem; 
-    text-transform: uppercase; 
-    letter-spacing: 1px; 
-    color: var(--text-light); 
-} 
-
-.footer-col p { 
-    font-size: 0.9rem; 
-    color: #ffffff; 
-    margin-top: 5px; 
-    display: flex; 
-    align-items: center; 
-    gap: 10px; 
-} 
-
-.footer-links { list-style: none; padding: 0; margin: 0; }
-.footer-links li { margin-bottom: 10px; }
-
-.footer-links a { 
-    color: #ffffff; 
-    text-decoration: none; 
-    transition: all 0.3s ease; 
-    font-size: 0.9rem; 
-} 
-
-.footer-links a:hover { 
-    color: var(--primary-green); 
-    padding-left: 5px; 
-} 
-
-.logo-footer { height: 160px; opacity: 1; }
 .icon { width: 20px; height: 20px; flex-shrink: 0; }
 
 .social-icons { 

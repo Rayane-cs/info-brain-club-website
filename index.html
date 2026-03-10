@@ -1,236 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UHBC · Sign In / Sign Up</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UHBC · Sign In / Sign Up</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
+  <div class="bg-layer"></div>
 
-    <div class="bg-layer"></div>
-
-    <div id="register-page" class="container register-hidden">
-
-        <div class="brand-panel animate-in">
-            <div class="logos-grid">
-                <div class="brand-logo-new"></div>
-                <div class="logo-divider"></div>
-                <div class="brand-logo-aihouse"></div>
-            </div>
-
-            <div class="brand-content animate-fade">
-                <div class="brand-title">Join our community</div>
-                <div class="brand-description">
-                    Unlock tailored resources, connect with peers, and track your progress — all with your UHBC account.
-                </div>
-            </div>
-        </div>
-
-        <div class="form-panel animate-in">
-
-            <div class="nav-link">
-                <a href="#" id="show-login-link">- Already have an account? Sign in</a>
-            </div>
-
-            <div class="form-container" id="signup">
-                <h1 class="page-title">Sign up</h1>
-                <form id="register-form">
-
-                    <div class="form-group">
-                        <label for="fullname">Full Name</label>
-                        <input type="text" id="fullname" placeholder="full name">
-                        <div class="error-message" id="fullname-error"></div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" id="username" placeholder="username">
-                        <div class="error-message" id="username-error"></div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email address</label>
-                        <input type="email" id="email" placeholder="you@example.com">
-                        <div class="error-message" id="email-error"></div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <div class="input-wrapper">
-                            <input type="password" id="password" placeholder="········">
-                            <span class="toggle-password" data-target="password">👁</span>
-                        </div>
-                        <div class="error-message" id="password-error"></div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="role">Role</label>
-
-                        <select id="role">
-                            <option value="">Select Your Role</option>
-                            <option value="Student">Student</option>
-                            <option value="Teacher">Teacher</option>
-                            <option value="Researcher">Researcher</option>
-                            <option value="Entrepreneur">Entrepreneur</option>
-                            <option value="Other">Other</option>
-                        </select>
-
-                        <div class="error-message" id="role-error"></div>
-                    </div>
-
-                    <div class="form-group other-role-hidden" id="other-role-container">
-                        <label for="other-role">Specify Your Role</label>
-                        <input type="text" id="other-role" placeholder="e.g., Intern">
-                    </div>
-
-                    <button type="submit" class="btn btn-primary" id="register-submit">Sign up</button>
-
-                </form>
-            </div>
-        </div>
+  <div id="register-page" class="container register-hidden">
+    <div class="brand-panel animate-in">
+      <div class="logos-grid">
+        <div class="brand-logo-new"></div>
+        <div class="logo-divider"></div>
+        <div class="brand-logo-aihouse"></div>
+      </div>
+      <div class="brand-content animate-fade">
+        <div class="brand-title">Join our community</div>
+        <div class="brand-description">Unlock tailored resources, connect with peers, and track your progress — all with your UHBC account.</div>
+      </div>
     </div>
-
-
-    <div id="login-page" class="container">
-
-        <div class="brand-panel animate-in">
-            <div class="logos-grid">
-                <div class="brand-logo-new"></div>
-                <div class="logo-divider"></div>
-                <div class="brand-logo-aihouse"></div>
+    <div class="form-panel animate-in">
+      <div class="nav-link"><a href="#" id="show-login-link">- Already have an account? Sign in</a></div>
+      <div class="form-container" id="signup">
+        <h1 class="page-title">Sign up</h1>
+        <form id="register-form">
+          <div class="form-group">
+            <label for="fullname">Full Name</label>
+            <input type="text" id="fullname" placeholder="full name">
+            <div class="error-message" id="fullname-error"></div>
+          </div>
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" placeholder="username">
+            <div class="error-message" id="username-error"></div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" id="email" placeholder="you@example.com">
+            <div class="error-message" id="email-error"></div>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="input-wrapper">
+              <input type="password" id="password" placeholder="········">
+              <span class="toggle-password" data-target="password">👁</span>
             </div>
-
-            <div class="brand-content animate-fade">
-                <div class="brand-title">Welcome back</div>
-                <div class="brand-description">
-                    We're glad to see you again. Sign in to continue your journey.
-                </div>
-            </div>
-        </div>
-
-        <div class="form-panel animate-in">
-
-            <div class="nav-link">
-                <a href="#" id="show-register-link">- Don't have an account? Sign up</a>
-            </div>
-
-            <div class="form-container">
-                <h1 class="page-title">Sign in</h1>
-                <div id="login-default">
-                    <form id="login-form">
-
-                        <div class="form-group">
-                            <label for="login-identifier">Username or email</label>
-                            <input type="text" id="login-identifier" placeholder="username or email">
-                            <div class="error-message" id="login-identifier-error"></div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="login-password">Password</label>
-
-                            <div class="input-wrapper">
-                                <input type="password" id="login-password" placeholder="········">
-                                <span class="toggle-password" data-target="login-password">👁</span>
-                            </div>
-
-                            <div class="error-message" id="login-password-error"></div>
-                        </div>
-
-                        <div class="form-group forgot-row">
-                            <div class="forgot-link">
-                                <a href="#" id="forgot-password-link">Forgot password?</a>
-                            </div>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary" id="login-submit">
-                            Sign in
-                        </button>
-
-                        <div class="divider"><span>OR</span></div>
-
-                        <button type="button" class="btn btn-dark" id="guest-btn">Continue as guest</button>
-
-                    </form>
-                </div>
-
-
-                <div id="forgot-container" class="hidden">
-
-                    <div id="forgot-step1" class="forgot-step">
-
-                        <h3 class="forgot-title">Reset password</h3>
-
-                        <div class="form-group">
-                            <label for="reset-email">Email address</label>
-                            <input type="email" id="reset-email" placeholder="you@example.com">
-                        </div>
-
-                        <button class="btn btn-primary" id="send-code-btn">Send reset link</button>
-
-                        <div class="forgot-link forgot-center">
-                            <a href="#" id="cancel-forgot-step1">Back to sign in</a>
-                        </div>
-
-                    </div>
-
-
-                    <div id="forgot-step2" class="forgot-step hidden">
-
-                        <h3 class="forgot-title-small">Check your email</h3>
-
-                        <p class="forgot-text" id="reset-email-display"></p>
-                        <p class="forgot-text">We sent a password reset link. Click the link in the email to set a new
-                            password.</p>
-
-                        <div class="forgot-link forgot-center-small">
-                            <a href="#" id="resend-link">Resend link</a>
-                        </div>
-                        <div class="forgot-link forgot-center-small">
-                            <a href="#" id="cancel-forgot-step2">Back to sign in</a>
-                        </div>
-
-                    </div>
-
-                    <div id="forgot-step3" class="forgot-step hidden">
-                        <h3 class="forgot-title">Set new password</h3>
-                        <p class="forgot-text">Enter your new password below.</p>
-                        <div class="form-group">
-                            <label for="new-password-input">New password</label>
-                            <div class="input-wrapper">
-                                <input type="password" id="new-password-input" placeholder="········" minlength="8">
-                                <span class="toggle-password" data-target="new-password-input">👁</span>
-                            </div>
-                            <div class="error-message" id="new-password-error"></div>
-                        </div>
-                        <div class="form-group">
-                            <label for="confirm-password-input">Confirm password</label>
-                            <div class="input-wrapper">
-                                <input type="password" id="confirm-password-input" placeholder="········" minlength="8">
-                                <span class="toggle-password" data-target="confirm-password-input">👁</span>
-                            </div>
-                            <div class="error-message" id="confirm-password-error"></div>
-                        </div>
-                        <button type="button" class="btn btn-primary" id="set-new-password-btn">Set new
-                            password</button>
-                        <div class="forgot-link forgot-center-small">
-                            <a href="#" id="cancel-recovery-link">Cancel</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+            <div class="error-message" id="password-error"></div>
+          </div>
+          <div class="form-group">
+            <label for="role">Role</label>
+            <select id="role">
+              <option value="">Select Your Role</option>
+              <option value="Student">Student</option>
+              <option value="Teacher">Teacher</option>
+              <option value="Researcher">Researcher</option>
+              <option value="Entrepreneur">Entrepreneur</option>
+              <option value="Other">Other</option>
+            </select>
+            <div class="error-message" id="role-error"></div>
+          </div>
+          <div class="form-group other-role-hidden" id="other-role-container">
+            <label for="other-role">Specify Your Role</label>
+            <input type="text" id="other-role" placeholder="e.g., Intern">
+          </div>
+          <button type="submit" class="btn btn-primary" id="register-submit">Sign up</button>
+        </form>
+      </div>
     </div>
+  </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js" defer crossorigin="anonymous"></script>
-    <script src="script.js" defer></script>
-    <script src="/js/auth.js" defer></script>
+  <div id="login-page" class="container">
+    <div class="brand-panel animate-in">
+      <div class="logos-grid">
+        <div class="brand-logo-new"></div>
+        <div class="logo-divider"></div>
+        <div class="brand-logo-aihouse"></div>
+      </div>
+      <div class="brand-content animate-fade">
+        <div class="brand-title">Welcome back</div>
+        <div class="brand-description">We're glad to see you again. Sign in to continue your journey.</div>
+      </div>
+    </div>
+    <div class="form-panel animate-in">
+      <div class="nav-link"><a href="#" id="show-register-link">- Don't have an account? Sign up</a></div>
+      <div class="form-container">
+        <h1 class="page-title">Sign in</h1>
+        <div id="login-default">
+          <form id="login-form">
+            <div class="form-group">
+              <label for="login-identifier">Username or email</label>
+              <input type="text" id="login-identifier" placeholder="username or email">
+              <div class="error-message" id="login-identifier-error"></div>
+            </div>
+            <div class="form-group">
+              <label for="login-password">Password</label>
+              <div class="input-wrapper">
+                <input type="password" id="login-password" placeholder="········">
+                <span class="toggle-password" data-target="login-password">👁</span>
+              </div>
+              <div class="error-message" id="login-password-error"></div>
+            </div>
+            <div class="form-group forgot-row">
+              <div class="forgot-link"><a href="#" id="forgot-password-link">Forgot password?</a></div>
+            </div>
+            <button type="submit" class="btn btn-primary" id="login-submit">Sign in</button>
+            <div class="divider"><span>OR</span></div>
+            <button type="button" class="btn btn-dark" id="guest-btn">Continue as guest</button>
+          </form>
+        </div>
+
+        <div id="forgot-container" class="hidden">
+          <div id="forgot-step1" class="forgot-step">
+            <h3 class="forgot-title">Reset password</h3>
+            <div class="form-group">
+              <label for="reset-email">Email address</label>
+              <input type="email" id="reset-email" placeholder="you@example.com">
+            </div>
+            <button class="btn btn-primary" id="send-code-btn">Send reset link</button>
+            <div class="forgot-link forgot-center"><a href="#" id="cancel-forgot-step1">Back to sign in</a></div>
+          </div>
+
+          <div id="forgot-step2" class="forgot-step hidden">
+            <h3 class="forgot-title-small">Check your email</h3>
+            <p class="forgot-text" id="reset-email-display"></p>
+            <p class="forgot-text">We sent a password reset link. Click the link in the email to set a new password.</p>
+            <div class="forgot-link forgot-center-small"><a href="#" id="resend-link">Resend link</a></div>
+            <div class="forgot-link forgot-center-small"><a href="#" id="cancel-forgot-step2">Back to sign in</a></div>
+          </div>
+
+          <div id="forgot-step3" class="forgot-step hidden">
+            <h3 class="forgot-title">Set new password</h3>
+            <p class="forgot-text">Enter your new password below.</p>
+            <div class="form-group">
+              <label for="new-password-input">New password</label>
+              <div class="input-wrapper">
+                <input type="password" id="new-password-input" placeholder="········" minlength="8">
+                <span class="toggle-password" data-target="new-password-input">👁</span>
+              </div>
+              <div class="error-message" id="new-password-error"></div>
+            </div>
+            <div class="form-group">
+              <label for="confirm-password-input">Confirm password</label>
+              <div class="input-wrapper">
+                <input type="password" id="confirm-password-input" placeholder="········" minlength="8">
+                <span class="toggle-password" data-target="confirm-password-input">👁</span>
+              </div>
+              <div class="error-message" id="confirm-password-error"></div>
+            </div>
+            <button type="button" class="btn btn-primary" id="set-new-password-btn">Set new password</button>
+            <div class="forgot-link forgot-center-small"><a href="#" id="cancel-recovery-link">Cancel</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js" defer crossorigin="anonymous"></script>
+  <script src="script.js" defer></script>
+  <script src="js/auth.js" defer></script>
 </body>
-
 </html>

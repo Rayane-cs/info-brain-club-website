@@ -6,7 +6,6 @@
   <title>AI House UHBC | Home</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap">
   <link rel="stylesheet" href="/css/homepage.css">
   <script src="/js/component-loader.js"></script>
 </head>
@@ -123,21 +122,21 @@
         const n = slides.length;
         slides.forEach((s, i) => {
           s.className = 'pillar-card';
-          if      (i === current)                s.classList.add('active');
-          else if (i === (current - 1 + n) % n)  s.classList.add('prev');
-          else if (i === (current + 1) % n)       s.classList.add('next');
-          else                                    s.classList.add('hidden');
+          if      (i === current)               s.classList.add('active');
+          else if (i === (current - 1 + n) % n) s.classList.add('prev');
+          else if (i === (current + 1) % n)     s.classList.add('next');
+          else                                  s.classList.add('hidden');
         });
         dotsWrap.querySelectorAll('.carousel-dot').forEach((d, i) => {
           d.classList.toggle('active', i === current);
         });
       }
 
-      function goTo(idx) { current = (idx + slides.length) % slides.length; updateCarousel(); resetAuto(); }
+      function goTo(idx)   { current = (idx + slides.length) % slides.length; updateCarousel(); resetAuto(); }
       function nextSlide() { goTo(current + 1); }
       function prevSlide() { goTo(current - 1); }
       function startAuto() { autoTimer = setInterval(nextSlide, 4000); }
-      function resetAuto()  { clearInterval(autoTimer); startAuto(); }
+      function resetAuto() { clearInterval(autoTimer); startAuto(); }
 
       document.getElementById('nextBtn').addEventListener('click', nextSlide);
       document.getElementById('prevBtn').addEventListener('click', prevSlide);

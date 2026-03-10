@@ -58,7 +58,6 @@
   color: var(--text);
   text-decoration: none;
   border-radius: 8px;
-  transition: background 0.18s, color 0.18s;
 }
 
 .nav-links li a:hover,
@@ -97,7 +96,6 @@
   border: none;
   background: transparent;
   color: var(--text);
-  transition: background 0.18s, color 0.18s;
 }
 
 .nav-profile-link:hover {
@@ -187,14 +185,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   background: transparent;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   padding: 6px;
-  transition: background 0.18s;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -203,8 +200,8 @@
 }
 
 .hamburger-icon {
-  width: 24px;
-  height: 24px;
+  width: 34px;
+  height: 34px;
   object-fit: contain;
   display: block;
 }
@@ -245,7 +242,6 @@
   text-decoration: none;
   border-left: 3px solid transparent;
   font-family: inherit;
-  transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
 
 .mobile-dropdown-link:hover,
@@ -290,15 +286,7 @@
   border-left: 3px solid transparent;
   cursor: pointer;
   font-family: inherit;
-  transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
-
-.mobile-dropdown-btn:hover {
-  background: rgba(220,53,69,0.07);
-  color: #dc3545;
-  border-left-color: #dc3545;
-}
-
 @media (max-width: 56.25rem) {
   .header { display: none !important; }
   .mobile-header { display: block; }

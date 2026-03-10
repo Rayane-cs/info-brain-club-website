@@ -14,26 +14,18 @@ body {
     min-height: 100vh;
 }
 
-.page-nav {
-    display: none;
-}
-
-.page-dot {
-    display: none;
-}
-
 .pages-container {
     display: flex;
     flex-direction: column;
     scroll-behavior: smooth;
 }
 
-.about-main {
-    flex: 1;
-}
-
 .pages-container::-webkit-scrollbar {
     display: none;
+}
+
+.about-main {
+    flex: 1;
 }
 
 .page {
@@ -52,7 +44,6 @@ body {
     width: 100%;
     gap: 3rem;
     background: rgba(255,255,255,0.9);
-    --webkit-backdrop-filter: blur(6px);
     border-radius: 2.5rem;
     padding: 2.5rem 3rem;
     box-shadow: 0 30px 50px -20px rgba(0,60,30,0.25);
@@ -62,14 +53,8 @@ body {
 }
 
 @keyframes slideInUp {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(40px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
 .page:nth-child(1) .content-card { animation-delay: 0.1s; }
@@ -77,7 +62,6 @@ body {
 .page:nth-child(3) .content-card { animation-delay: 0.2s; }
 .page:nth-child(4) .content-card { animation-delay: 0.2s; }
 .page:nth-child(5) .content-card { animation-delay: 0.2s; }
-.page:nth-child(6) .content-card { animation-delay: 0.2s; }
 
 .text-block {
     flex: 1 1 50%;
@@ -86,14 +70,8 @@ body {
 }
 
 @keyframes fadeInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+    from { opacity: 0; transform: translateX(-30px); }
+    to   { opacity: 1; transform: translateX(0); }
 }
 
 .text-block h2 {
@@ -112,7 +90,8 @@ body {
     font-size: 2.4rem;
 }
 
-.text-block p, .text-block li {
+.text-block p,
+.text-block li {
     font-size: 1.2rem;
     color: #1f3a4f;
     margin-bottom: 0.8rem;
@@ -160,207 +139,72 @@ body {
 }
 
 @keyframes fadeInRight {
-    from {
-        opacity: 0;
-        transform: translateX(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+    from { opacity: 0; transform: translateX(30px); }
+    to   { opacity: 1; transform: translateX(0); }
 }
 
 .img-left .content-card {
     flex-direction: row-reverse;
 }
 
-.about-page {
-    background: #ffffff;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-.about-content {
-    max-width: 900px;
-    width: 100%;
-    background: transparent;
-    padding: 0;
-    margin: 0 auto;
-}
-
-.about-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 2rem;
-}
-
-.about-heading {
-    font-size: 3.5rem;
-    font-weight: 650;
-    letter-spacing: -0.5px;
-    color: #f97316;
-    line-height: 1.2;
-    text-align: center;
-    font-family: 'Playfair Display', serif;
-}
-
-.about-text {
-    font-size: .9rem;
-    font-weight: 430;
-    color: #1e1f28;
-    margin-bottom: 2rem;
-    text-align: center;
-    max-width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-    font-family: 'Inter', sans-serif;
-    word-break: break-word;
-}
-
-.about-text strong {
-    font-weight: 600;
-    color: #12141c;
-}
-
-.long-orange-line {
-    width: 100%;
-    height: 6px;
-    background: #f97316;
-    border: none;
-    border-radius: 4px;
-    margin: 1rem 0 0 0;
-}
-
-.spacer {
-    height: 0.5rem;
-}
-
-@media (max-width: 1024px) {
-    .page {
-        padding: 2rem;
-    }
-    .content-card {
-        padding: 2rem;
-        gap: 2rem;
-    }
-    .text-block h2 {
-        font-size: 2.2rem;
-    }
-}
-
-@media (max-width: 900px) {
-    .page {
-        padding: 1rem;
-        height: auto;
-        min-height: 100vh;
-    }
-    .content-card {
-        flex-direction: column !important;
-        padding: 1.5rem;
-    }
-    .image-block {
-        width: 100%;
-        height: 250px;
-        flex: auto;
-    }
-    .text-block {
-        animation-name: fadeInUp;
-    }
-
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    .text-block h2 {
-        font-size: 1.8rem;
-        margin-bottom: 1.2rem;
-    }
-    .text-block p, .text-block li {
-        font-size: 1rem;
-    }
-    .page-nav {
-        display: none;
-    }
-    .about-heading {
-        font-size: 2.5rem;
-    }
-    .about-text {
-        font-size: 1.1rem;
-    }
-}
-
-@media (max-width: 600px) {
-    .page {
-        padding: 1rem;
-        height: auto;
-        min-height: 100vh;
-    }
-    .content-card {
-        padding: 1rem;
-    }
-    .image-block {
-        height: 200px;
-    }
-    .text-block h2 {
-        font-size: 1.5rem;
-        padding-left: 1rem;
-        border-left-width: 6px;
-    }
-    .text-block p, .text-block li {
-        font-size: 0.95rem;
-        line-height: 1.4;
-    }
-    .about-heading {
-        font-size: 2rem;
-    }
-    .about-text {
-        font-size: 1rem;
-    }
-}
 #active-nav-link {
     color: rgb(206, 230, 208);
     background: #025e3083;
     font-weight: 600;
 }
 
-.icon { width: 20px; height: 20px; flex-shrink: 0; }
+@media (max-width: 1024px) {
+    .page { padding: 2rem; }
+    .content-card { padding: 2rem; gap: 2rem; }
+    .text-block h2 { font-size: 2.2rem; }
+}
 
-.social-icons { 
-    display: flex; 
-    gap: 12px; 
-    margin-top: 15px; 
-} 
+@media (max-width: 900px) {
+    .page { padding: 1rem; }
 
-.social-icons a { 
-    width: 40px; 
-    height: 40px; 
-    background: transparent; 
-    border-radius: 50%; 
-    border: 1px solid var(--primary-green);
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    color: #ffffff; 
-    transition: all 0.3s ease; 
-    text-decoration: none; 
-} 
+    .content-card {
+        flex-direction: column !important;
+        padding: 1.5rem;
+    }
 
-.social-icons a:hover { 
-    background: transparent; 
-    border-color: var(--primary-orange); 
-    color: var(--primary-orange); 
-    transform: scale(1.05); 
-} 
+    .image-block {
+        width: 100%;
+        height: 250px;
+        flex: auto;
+    }
 
-.social-icons a svg { width: 20px; height: 20px; }
+    .text-block { animation-name: fadeInUp; }
 
-/* ── Remove old first-section hero (replaced by page-hero in homepage.css) ── */
-.about-page { display: none !important; }
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .text-block h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .text-block p,
+    .text-block li {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .content-card { padding: 1rem; }
+
+    .image-block { height: 200px; }
+
+    .text-block h2 {
+        font-size: 1.5rem;
+        padding-left: 1rem;
+        border-left-width: 6px;
+    }
+
+    .text-block p,
+    .text-block li {
+        font-size: 0.95rem;
+        line-height: 1.4;
+    }
+}

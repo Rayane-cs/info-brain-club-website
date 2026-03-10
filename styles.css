@@ -393,128 +393,102 @@ input:focus, select:focus {
 @media (max-width: 768px) {
     .container {
         flex-direction: column;
+        min-height: 100vh;
     }
     .brand-panel {
         flex: 0 0 auto;
-        padding: 4rem 2rem 2rem;
-        min-height: 40vh;
+        padding: 2.5rem 2rem 1.5rem;
     }
     .form-panel {
-        flex: 1 0 auto;
-        padding: 2rem 1.5rem 4rem;
+        flex: 1;
+        padding: 2rem 1.5rem 3rem;
         border-radius: 30px 30px 0 0;
-        margin-top: -30px;
+        margin-top: -20px;
         box-shadow: 0 -10px 30px rgba(0,0,0,0.2);
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
     }
-    .brand-content {
-        display: block; /* Keep content visible but adjust */
-    }
-    .brand-title {
-        font-size: 1.8rem;
-    }
+    .form-container { width: 100%; max-width: 420px; }
+    .brand-description { display: none; }
+    .brand-title { font-size: 1.8rem; }
 }
 
 @media (max-width: 480px) {
     .container {
         flex-direction: column;
+        min-height: 100vh;
+        min-height: 100dvh;
     }
-    
+
     .brand-panel {
-        min-height: auto;
-        padding: 1rem 1rem 0.5rem 1rem;
-        justify-content: flex-start;
-        padding-top: 1.5rem;
+        flex: 0 0 auto;
+        padding: 1.5rem 1rem 1rem;
         width: 100%;
-        order: -1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
-    
+
+    .brand-description { display: none; }
+
     .form-panel {
+        flex: 1;
         width: 100%;
         max-width: 100%;
-        padding: 1.5rem;
-        position: relative;
-        top: auto;
-        left: 1rem;
-        right: auto;
-        transform: none;
-        border-radius: 20px;
-        margin-top: 0;
-        box-shadow: none;
-        flex: 1;
+        padding: 1.75rem 1.25rem 2rem;
+        border-radius: 24px 24px 0 0;
+        margin-top: -16px;
+        box-shadow: 0 -8px 24px rgba(0,0,0,0.18);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
-    
+
+    .form-container {
+        width: 100%;
+        max-width: 100%;
+    }
+
     .logos-grid {
-        margin-bottom: 1rem;
+        margin-bottom: 0.75rem;
         gap: 0.75rem;
-        max-width: 300px;
+        max-width: 260px;
     }
-    
+
     .brand-logo-new,
     .brand-logo-aihouse {
-        width: 50px;
-        height: 50px;
+        width: 48px;
+        height: 48px;
     }
-    
-    .logo-divider {
-        height: 30px;
-        width: 1px;
-    }
-    
+
+    .logo-divider { height: 28px; width: 1px; }
+
     .brand-title {
-        font-size: 1.4rem;
-        margin-bottom: 0.5rem;
-    }
-    
-    .brand-description {
-        display: none;
-    }
-    
-    .brand-content {
-        margin-bottom: 0.5rem;
-    }
-    
-    .page-title {
         font-size: 1.35rem;
-        margin-bottom: 1rem;
+        margin-bottom: 0.25rem;
     }
-    
-    .form-group {
-        margin-bottom: 1rem;
-    }
-    
+
+    .brand-content { margin-bottom: 0; }
+
+    .page-title { font-size: 1.35rem; margin-bottom: 1rem; }
+
+    .form-group { margin-bottom: 0.875rem; }
+
     .form-group input,
-    .form-group select {
-        min-height: 44px;
-        font-size: 16px;
-    }
-    
-    .btn {
-        min-height: 44px;
-        font-size: 1rem;
-    }
-    
-    .divider {
-        margin: 1.25rem 0;
-    }
-    
-    .forgot-title {
-        font-size: 1.25rem;
-        margin-bottom: 1rem;
-    }
-    
-    .forgot-title-small {
-        font-size: 1.1rem;
-    }
-    
-    .forgot-text {
-        font-size: 0.85rem;
-    }
-    
-    .nav-link {
-        top: 0.75rem;
-        right: 0.75rem;
-        left: 0.75rem;
-    }
+    .form-group select { min-height: 44px; font-size: 16px; }
+
+    .btn { min-height: 44px; font-size: 1rem; }
+
+    .divider { margin: 1.1rem 0; }
+
+    .nav-link { top: 0.5rem; right: 0.75rem; left: auto; }
+
+    .forgot-title { font-size: 1.25rem; margin-bottom: 1rem; }
+    .forgot-title-small { font-size: 1.1rem; }
+    .forgot-text { font-size: 0.85rem; }
 }
 
 /* Hamburger Menu Styles */

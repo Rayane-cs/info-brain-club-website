@@ -19,21 +19,37 @@
     const img   = ev.image_url || 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&w=800';
     const taken = typeof ev.regis_user === 'number' ? ev.regis_user : 0;
     const cap   = typeof ev.capacity === 'number' ? ev.capacity : null;
+    const pct   = cap ? Math.min(100, Math.round((taken / cap) * 100)) : 0;
     const url   = detailUrl(ev.id);
+
+    const iconClock = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`;
+    const iconPin   = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>`;
+
     return `
       <article class="event-card">
         <div class="event-image">
           <img src="${escapeHtml(img)}" alt="${escapeHtml(ev.title || 'Event')}" loading="lazy"
                onerror="this.src='https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&w=800'">
+          <div class="event-image-overlay"></div>
           ${ev.event_date ? `<div class="date-badge">${escapeHtml(ev.event_date)}</div>` : ''}
+          <span class="cat-tag">${escapeHtml(ev.category || 'Event')}</span>
         </div>
         <div class="event-content">
-          <span class="cat-tag">${escapeHtml(ev.category || 'Event')}</span>
           <h3 class="event-title">${escapeHtml(ev.title || 'Event')}</h3>
-          ${cap ? `<p class="event-seats">Seats: ${taken} / ${cap}</p>` : ''}
+          <div class="event-meta-row">
+            ${ev.event_time   ? `<span class="event-meta-item">${iconClock}${escapeHtml(ev.event_time)}</span>` : ''}
+            ${ev.location     ? `<span class="event-meta-item">${iconPin}${escapeHtml(ev.location)}</span>`    : ''}
+          </div>
+          ${cap ? `
+          <div class="event-seats">
+            <span>Seats</span>
+            <span>${taken} / ${cap}</span>
+          </div>
+          <div class="event-seats-bar"><div class="event-seats-fill" style="width:${pct}%"></div></div>
+          ` : ''}
           <div class="event-actions">
-            <a href="${url}" class="event-link">View details</a>
-            <a href="${url}" class="event-register-btn">Register</a>
+            <a href="${url}" class="event-link">Details</a>
+            <a href="${url}" class="event-register-btn">Register →</a>
           </div>
         </div>
       </article>

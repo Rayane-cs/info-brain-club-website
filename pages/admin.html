@@ -4,116 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Dashboard | AI House UHBC</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap">
   <link rel="stylesheet" href="/css/homepage.css">
-  <style>
-    .admin-wrap { padding: 2.5rem 5% 4rem; }
-    .admin-inner { max-width: 75rem; margin: 0 auto; }
-
-    .admin-head { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; }
-    .admin-head h1 { font-family: var(--font-display); font-size: clamp(1.5rem,3vw,2rem); color: var(--green); }
-    .admin-head p { color: var(--text-muted); font-size: .875rem; }
-
-    .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem,1fr)); gap: 1rem; margin-bottom: 2rem; }
-    .stat-card {
-      background: var(--bg-white); border-radius: var(--radius);
-      border: 1px solid var(--border); padding: 1.25rem 1.5rem;
-      box-shadow: var(--card-shadow);
-    }
-    .stat-card h3 { font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: .375rem; }
-    .stat-value { font-family: var(--font-display); font-size: 2rem; font-weight: 800; color: var(--green); }
-
-    .admin-panel {
-      background: var(--bg-white); border-radius: var(--radius);
-      border: 1px solid var(--border); box-shadow: var(--card-shadow);
-      overflow: hidden; margin-bottom: 2rem;
-    }
-    .panel-header {
-      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .75rem;
-      padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border);
-      background: linear-gradient(135deg, #f8faf8, #f0f5f0);
-    }
-    .panel-header h2 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--green); }
-
-    /* event form */
-    .event-form-wrapper { padding: 1.5rem; border-bottom: 1px solid var(--border); background: #fafcfa; }
-    .event-form-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(12rem,1fr)); gap: .875rem; margin-bottom: .875rem; }
-    .event-form-field label { display: block; font-size: .78rem; font-weight: 600; color: var(--text); margin-bottom: .3rem; }
-    .event-form-field input,
-    .event-form-field textarea {
-      width: 100%; padding: .5rem .75rem;
-      border: 1px solid var(--border); border-radius: var(--radius-sm);
-      font-family: var(--font-main); font-size: .875rem; color: var(--text);
-      background: var(--bg-white); transition: border-color var(--transition);
-    }
-    .event-form-field input:focus,
-    .event-form-field textarea:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 3px rgba(0,102,51,.08); }
-    .event-form-field textarea { resize: vertical; min-height: 4rem; }
-    .event-form-actions { display: flex; gap: .625rem; }
-
-    /* table */
-    .table-wrapper { overflow-x: auto; }
-    .admin-table { width: 100%; border-collapse: collapse; font-size: .875rem; }
-    .admin-table th {
-      text-align: left; padding: .75rem 1rem;
-      background: var(--bg); color: var(--text-muted);
-      font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px;
-      border-bottom: 1px solid var(--border);
-    }
-    .admin-table td { padding: .875rem 1rem; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: middle; }
-    .admin-table tr:last-child td { border-bottom: none; }
-    .admin-table tr:hover td { background: var(--bg); }
-    .text-center { text-align: center; color: var(--text-muted); font-style: italic; }
-    .user-cell { display: flex; align-items: center; gap: .625rem; }
-    .user-avatar-small {
-      width: 2rem; height: 2rem; border-radius: 50%; flex-shrink: 0;
-      background: linear-gradient(135deg, var(--green), var(--green-light));
-      color: #fff; font-size: .7rem; font-weight: 700;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .role-badge { display: inline-flex; align-items: center; padding: .2rem .6rem; border-radius: var(--radius-pill); font-size: .72rem; font-weight: 600; }
-    .role-user  { background: rgba(0,102,51,.08);   color: var(--green); }
-    .role-admin { background: rgba(168,85,247,.1);  color: #c084fc; }
-    .role-guest { background: rgba(156,163,175,.1); color: #9ca3af; }
-
-    .btn-sm { padding: .3rem .7rem; font-size: .75rem; border-radius: .375rem; }
-    .btn-danger { color: #ef4444; border: 1px solid #ef4444; background: transparent; cursor: pointer; font-family: var(--font-main); font-weight: 600; transition: all var(--transition); }
-    .btn-danger:hover { background: rgba(239,68,68,.08); }
-
-    @media (max-width: 48rem) {
-      .admin-wrap { padding: 1.5rem 5% 3rem; }
-      .stats-row { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 30rem) {
-      .stats-row { grid-template-columns: 1fr; }
-    }
-  </style>
+  <link rel="stylesheet" href="/css/admin.css">
+  <script src="/js/component-loader.js"></script>
 </head>
 <body>
-  <header class="header">
-    <nav class="navbar">
-      <div class="nav-container">
-        <a href="/pages/homepage.html" class="logo">
-          <img src="/assets/aihouse_logo.svg" alt="AI House Logo" class="logo-header">
-        </a>
-        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-        <ul class="nav-links">
-          <li><a href="/pages/homepage.html">Home</a></li>
-          <li><a href="/pages/about.html">About us</a></li>
-          <li><a href="/pages/projects.html">Projects</a></li>
-          <li><a href="/pages/events.html">Events</a></li>
-          <li><a href="/pages/contact.html">Contact</a></li>
-          <li><a href="/pages/admin.html" id="active-nav-link">Admin</a></li>
-        </ul>
-        <div id="header-actions"></div>
-        <img src="/assets/uhbc_logo.svg" alt="UHBC Logo" class="logo-header">
-      </div>
-    </nav>
-  </header>
 
-  <!-- PAGE HERO -->
   <div class="page-hero">
     <div class="page-hero-inner">
       <span class="page-hero-tag">Admin Only</span>
@@ -125,7 +24,17 @@
 
   <main class="admin-wrap">
     <div class="admin-inner">
-      <!-- Stats -->
+      <div class="admin-head">
+        <div>
+          <h1>Dashboard</h1>
+          <p>Manage users, events, and platform settings.</p>
+        </div>
+        <a href="/pages/profile.html" class="btn btn-secondary btn-sm admin-profile-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          My Profile
+        </a>
+      </div>
+
       <div class="stats-row">
         <div class="stat-card">
           <h3>Total Users</h3>
@@ -135,12 +44,22 @@
           <h3>Admins</h3>
           <div class="stat-value" id="stat-admins">…</div>
         </div>
+        <div class="stat-card">
+          <h3>Total Events</h3>
+          <div class="stat-value" id="stat-events">…</div>
+        </div>
+        <div class="stat-card">
+          <h3>Guests / Other</h3>
+          <div class="stat-value" id="stat-guests">…</div>
+        </div>
       </div>
 
-      <!-- Users Panel -->
       <div class="admin-panel">
         <div class="panel-header">
           <h2>Registered Users</h2>
+          <div class="panel-header-actions">
+            <input type="search" id="userSearch" class="admin-search" placeholder="Search users…" autocomplete="off">
+          </div>
         </div>
         <div class="table-wrapper">
           <table class="admin-table">
@@ -149,7 +68,7 @@
                 <th>User</th>
                 <th>Email</th>
                 <th>Role</th>
-                <th>Is Admin</th>
+                <th>Admin</th>
                 <th>Joined</th>
                 <th>Actions</th>
               </tr>
@@ -161,15 +80,14 @@
         </div>
       </div>
 
-      <!-- Events Panel -->
       <div class="admin-panel">
         <div class="panel-header">
           <h2>Events</h2>
           <button id="toggleEventFormBtn" class="btn btn-primary btn-sm">+ Add Event</button>
         </div>
 
-        <div id="eventFormWrapper" class="event-form-wrapper" style="display:none;">
-          <form id="eventForm">
+        <div id="eventFormWrapper" class="event-form-wrapper" hidden>
+          <form id="eventForm" autocomplete="off">
             <div class="event-form-row">
               <div class="event-form-field"><label>Title *</label><input type="text" name="title" required></div>
               <div class="event-form-field"><label>Category</label><input type="text" name="category" placeholder="Workshop, Training…"></div>
@@ -183,7 +101,7 @@
               <div class="event-form-field"><label>Location</label><input type="text" name="location" placeholder="Room A1 B12"></div>
               <div class="event-form-field"><label>Image URL</label><input type="url" name="image_url" placeholder="https://…"></div>
             </div>
-            <div class="event-form-row" style="grid-template-columns:1fr;">
+            <div class="event-form-row event-form-row-full">
               <div class="event-form-field"><label>Description</label><textarea name="description" rows="2" placeholder="Short description of the event"></textarea></div>
             </div>
             <div class="event-form-actions">
@@ -209,25 +127,10 @@
     </div>
   </main>
 
-  <footer class="footer">
-    <div class="footer-col logo"><img src="/assets/aihouse_logo_white.svg" alt="" class="logo-footer" loading="lazy"></div>
-    <div class="footer-col footer-quick">
-      <h3>Quick Links</h3>
-      <ul class="footer-links">
-        <li><a href="/pages/homepage.html">- Home</a></li>
-        <li><a href="/pages/profile.html">- My Profile</a></li>
-        <li><a href="/pages/events.html">- Events</a></li>
-      </ul>
-    </div>
-    <div class="footer-col footer-contact">
-      <h3>Contact Us</h3>
-      <p><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>aihouse@univ-chlef.dz</p>
-    </div>
-  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js" defer crossorigin="anonymous"></script>
+  <script src="/js/utils.js" defer></script>
+  <script src="/js/navbar.js" defer></script>
+  <script src="/js/admin.js" defer></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js" crossorigin="anonymous"></script>
-  <script src="/js/utils.js"></script>
-  <script src="/js/navbar.js"></script>
-  <script src="/js/admin.js"></script>
 </body>
 </html>

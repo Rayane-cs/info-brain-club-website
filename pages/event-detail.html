@@ -4,112 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Event | AI House UHBC</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap">
   <link rel="stylesheet" href="/css/homepage.css">
-  <style>
-    .event-main { padding: 2.5rem 5% 4rem; }
-    .event-page { max-width: 56rem; margin: 0 auto; }
-    .event-back-link {
-      display: inline-flex; align-items: center; gap: .4rem;
-      color: var(--green); font-weight: 600; font-size: .875rem;
-      margin-bottom: 2rem; transition: gap var(--transition);
-    }
-    .event-back-link:hover { gap: .7rem; }
-    .event-header { margin-bottom: 2rem; }
-    .event-kicker {
-      display: inline-block; padding: .3rem .875rem;
-      background: rgba(255,107,0,.12); color: var(--orange);
-      border: 1px solid var(--orange); border-radius: var(--radius-pill);
-      font-size: .72rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: .1em; margin-bottom: .875rem;
-    }
-    .event-title {
-      font-family: var(--font-serif);
-      font-size: clamp(1.6rem, 4vw, 2.5rem); font-weight: 700;
-      color: var(--text); margin-bottom: .75rem; line-height: 1.2;
-    }
-    .event-underline { width: 3.5rem; height: 4px; background: var(--orange); border-radius: var(--radius-pill); margin-bottom: 1rem; }
-    .event-subtitle { color: var(--text-muted); font-size: 1rem; line-height: 1.6; }
-
-    .event-detail-card { background: var(--bg-white); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); box-shadow: var(--card-shadow); }
-    .event-detail-image { position: relative; width: 100%; aspect-ratio: 16/8; overflow: hidden; background: #d4e8d4; }
-    .event-detail-image img { width: 100%; height: 100%; object-fit: cover; }
-    .event-chip {
-      position: absolute; top: 1rem; left: 1rem;
-      background: var(--orange); color: #fff;
-      padding: .3rem .875rem; border-radius: var(--radius-pill);
-      font-size: .72rem; font-weight: 700; text-transform: uppercase;
-    }
-    .event-detail-info-bar {
-      display: flex; flex-wrap: wrap; gap: 1rem;
-      padding: 1.25rem 1.5rem;
-      background: linear-gradient(135deg, #f8faf8, #f0f5f0);
-      border-bottom: 1px solid var(--border);
-    }
-    .info-item { display: flex; align-items: center; gap: .5rem; font-size: .875rem; color: var(--text-muted); }
-    .info-icon { font-size: 1rem; }
-
-    .event-detail-body { padding: 1.75rem 1.5rem; display: flex; flex-direction: column; gap: 1.5rem; }
-    .section-heading { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--green); margin-bottom: .625rem; }
-    .section-text { color: var(--text-muted); line-height: 1.7; font-size: .95rem; }
-    .seats-text { font-size: .9rem; color: var(--text-muted); margin-bottom: .625rem; }
-    .seats-text strong { color: var(--text); }
-    .progress-track { height: .625rem; background: #e2e8f0; border-radius: var(--radius-pill); overflow: hidden; }
-    .progress-fill { height: 100%; background: linear-gradient(90deg, var(--green-light), var(--orange)); border-radius: var(--radius-pill); transition: width .4s ease; }
-    .event-error { background: rgba(220,38,38,.08); color: #dc2626; border: 1px solid rgba(220,38,38,.2); border-radius: .5rem; padding: .875rem 1rem; font-size: .875rem; }
-    .button-wrap { display: flex; gap: .875rem; flex-wrap: wrap; }
-    .btn-register {
-      background: var(--green); color: #fff;
-      border: 2px solid var(--green);
-      padding: .75rem 2rem; border-radius: .375rem;
-      font-family: var(--font-display); font-weight: 700; font-size: .9rem;
-      cursor: pointer; transition: all var(--transition);
-    }
-    .btn-register:hover { background: transparent; color: var(--green); transform: translateY(-2px); }
-    .btn-cancel-reg {
-      background: transparent; color: #dc2626;
-      border: 2px solid #dc2626;
-      padding: .75rem 2rem; border-radius: .375rem;
-      font-family: var(--font-display); font-weight: 700; font-size: .9rem;
-      cursor: pointer; transition: all var(--transition);
-    }
-    .btn-cancel-reg:hover { background: rgba(220,38,38,.08); transform: translateY(-2px); }
-    @media (max-width: 48rem) {
-      .event-detail-info-bar { flex-direction: column; gap: .625rem; }
-      .event-detail-body { padding: 1.25rem; }
-      .button-wrap { flex-direction: column; }
-      .btn-register, .btn-cancel-reg { width: 100%; }
-    }
-  </style>
+  <link rel="stylesheet" href="/css/event-detail.css">
+  <script src="/js/component-loader.js"></script>
 </head>
 <body class="has-page-loader">
+
   <div id="page-loader" class="page-loader" aria-hidden="true">
     <div class="loader-ring"></div>
     <p class="loader-text">Loading event...</p>
   </div>
-
-  <header class="header">
-    <nav class="navbar">
-      <div class="nav-container">
-        <a href="/pages/homepage.html" class="logo">
-          <img src="/assets/aihouse_logo.svg" alt="AI House Logo" class="logo-header">
-        </a>
-        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-        <ul class="nav-links">
-          <li><a href="/pages/homepage.html">Home</a></li>
-          <li><a href="/pages/about.html">About us</a></li>
-          <li><a href="/pages/projects.html">Projects</a></li>
-          <li><a href="/pages/events.html" id="active-nav-link">Events</a></li>
-          <li><a href="/pages/contact.html">Contact</a></li>
-          <li><a href="/pages/profile.html" id="dynamic-nav-link">Profile</a></li>
-        </ul>
-        <div id="header-actions"></div>
-        <img src="/assets/uhbc_logo.svg" alt="UHBC Logo" class="logo-header">
-      </div>
-    </nav>
-  </header>
 
   <main class="event-main page-fade">
     <div class="event-page">
@@ -157,34 +64,11 @@
     </div>
   </main>
 
-  <footer class="footer">
-    <div class="footer-col logo">
-      <img src="/assets/aihouse_logo_white.svg" alt="AI House Logo" class="logo-footer" loading="lazy">
-    </div>
-    <div class="footer-col footer-quick">
-      <h3>Quick Links</h3>
-      <ul class="footer-links">
-        <li><a href="/pages/about.html">- About AI House</a></li>
-        <li><a href="/pages/projects.html">- Our Projects</a></li>
-        <li><a href="/pages/events.html">- Events Calendar</a></li>
-        <li><a href="/pages/contact.html">- Contact</a></li>
-      </ul>
-    </div>
-    <div class="footer-col footer-contact">
-      <h3>Contact Us</h3>
-      <p><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Chlef, Algeria</p>
-      <p><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>aihouse@univ-chlef.dz</p>
-      <div class="social-icons">
-        <a href="https://www.facebook.com/people/AI-HOUSE-UHBC/61585214978330/" aria-label="Facebook" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
-        <a href="https://www.instagram.com/aihouseuhbc/" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-      </div>
-    </div>
-  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js" defer crossorigin="anonymous"></script>
+  <script src="/js/utils.js" defer></script>
+  <script src="/js/navbar.js" defer></script>
+  <script src="/js/page-loader.js" defer></script>
+  <script src="/js/event-detail.js" defer></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js" crossorigin="anonymous"></script>
-  <script src="/js/utils.js"></script>
-  <script src="/js/navbar.js"></script>
-  <script src="/js/page-loader.js"></script>
-  <script src="/js/event-detail.js"></script>
 </body>
 </html>

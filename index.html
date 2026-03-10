@@ -4,7 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UHBC · unified auth + forgot flow</title>
+    <title>UHBC · Sign In / Sign Up</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap">
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -168,7 +171,7 @@
                             <input type="email" id="reset-email" placeholder="you@example.com">
                         </div>
 
-                        <button class="btn btn-primary" id="send-code-btn">Send reset code</button>
+                        <button class="btn btn-primary" id="send-code-btn">Send reset link</button>
 
                         <div class="forgot-link forgot-center">
                             <a href="#" id="cancel-forgot-step1">Back to sign in</a>
@@ -225,9 +228,9 @@
 
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
-    <script src="/js/auth.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js" defer crossorigin="anonymous"></script>
+    <script src="script.js" defer></script>
+    <script src="/js/auth.js" defer></script>
 </body>
 
 </html>

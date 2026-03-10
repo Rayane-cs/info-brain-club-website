@@ -1,6 +1,3 @@
-/* ==========================================
-   CONFIGURATION
-   ========================================== */
 const CONFIG = {
   SUPABASE_URL: 'https://rmmgzviytfpwedstuhly.supabase.co',
   SUPABASE_ANON_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJtbWd6dml5dGZwd2Vkc3R1aGx5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI1NzAwNTYsImV4cCI6MjA4ODE0NjA1Nn0.KemNQ3DUcyDwtCL5MZuFmcL-0COiIs2-yyoXxfIZ1P8',
@@ -10,9 +7,6 @@ const CONFIG = {
   ]
 };
 
-/* ==========================================
-   SUPABASE CLIENT
-   ========================================== */
 let _client = null;
 let _loadPromise = null;
 
@@ -42,15 +36,11 @@ async function getSupabaseClient() {
   return _client;
 }
 
-/* ==========================================
-   AUTH HELPERS
-   ========================================== */
 async function isUserGuest() {
   try {
     const client = await getSupabaseClient();
     const { data: { user } } = await client.auth.getUser();
     if (user) return false;
-    // Check localStorage guest flag
     const stored = _getStoredUser();
     return !!(stored && stored.guest);
   } catch { return true; }
@@ -97,13 +87,8 @@ function setCurrentUser(u) {
   else localStorage.removeItem('currentUser');
 }
 
-function signOutGuest() {
-  localStorage.removeItem('currentUser');
-}
+function signOutGuest() { localStorage.removeItem('currentUser'); }
 
-/* ==========================================
-   UNIFIED NOTIFICATION SYSTEM
-   ========================================== */
 const _NT_COLORS = {
   success: { bg: '#006633', icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>` },
   error:   { bg: '#dc2626', icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>` },
@@ -111,7 +96,6 @@ const _NT_COLORS = {
   info:    { bg: '#1d4ed8', icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>` }
 };
 
-// Inject toast styles once
 function _injectNtStyles() {
   if (document.getElementById('_nt_styles')) return;
   const s = document.createElement('style');
@@ -133,21 +117,14 @@ function _injectNtStyles() {
 
 function showNotification(message, type = 'info', duration = 3500) {
   _injectNtStyles();
-  // remove existing
   document.querySelectorAll('.nt-toast').forEach(n => n.remove());
-
   const c = _NT_COLORS[type] || _NT_COLORS.info;
   const toast = document.createElement('div');
   toast.className = 'nt-toast';
   toast.style.background = c.bg;
-  toast.innerHTML = `
-    <span class="nt-icon">${c.icon}</span>
-    <span class="nt-msg">${escapeHtml(message)}</span>
-    <button class="nt-close" aria-label="Close">✕</button>
-  `;
+  toast.innerHTML = `<span class="nt-icon">${c.icon}</span><span class="nt-msg">${escapeHtml(message)}</span><button class="nt-close" aria-label="Close">✕</button>`;
   toast.querySelector('.nt-close').onclick = () => _dismissToast(toast);
   document.body.appendChild(toast);
-
   setTimeout(() => _dismissToast(toast), duration);
 }
 
@@ -157,9 +134,6 @@ function _dismissToast(el) {
   setTimeout(() => el.remove(), 300);
 }
 
-/* ==========================================
-   USER DATA HELPERS
-   ========================================== */
 async function getUserById(id) {
   if (!id) return null;
   const c = await getSupabaseClient();
@@ -191,9 +165,6 @@ async function toggleUserAdmin(userId, isAdmin) {
   return c.from('users').update({ is_admin: isAdmin }).eq('id', userId).select().single();
 }
 
-/* ==========================================
-   AVATAR HELPERS
-   ========================================== */
 function getInitials(name) {
   if (!name) return 'U';
   return name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
@@ -207,9 +178,6 @@ function hasCustomAvatar(user) {
   return !!(user?.avatar_url && user.avatar_url.trim());
 }
 
-/* ==========================================
-   UTILITY FUNCTIONS
-   ========================================== */
 function escapeHtml(text) {
   if (typeof text !== 'string') return String(text ?? '');
   const d = document.createElement('div');
@@ -219,14 +187,20 @@ function escapeHtml(text) {
 
 function formatDate(dateString, opts = {}) {
   if (!dateString) return 'Unknown';
-  try {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      year: 'numeric', month: 'short', day: 'numeric', ...opts
-    });
-  } catch { return 'Invalid date'; }
+  try { return new Date(dateString).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', ...opts }); }
+  catch { return 'Invalid date'; }
 }
 
 function debounce(fn, wait) {
   let t;
   return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), wait); };
+}
+
+function guardGuestEventRegister(e) {
+  isUserGuest().then(guest => {
+    if (guest) {
+      if (e) e.preventDefault();
+      showNotification('Join us first! Create an account to register for events.', 'warning');
+    }
+  });
 }

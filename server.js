@@ -43,7 +43,7 @@ const server = http.createServer((req, res) => {
 
         res.writeHead(200, {
             'Content-Type': contentType,
-            'Content-Security-Policy': "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com; object-src 'none'; base-uri 'self';",
+            'Content-Security-Policy': "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com https://fonts.googleapis.com; connect-src 'self' https://rmmgzviytfpwedstuhly.supabase.co wss://rmmgzviytfpwedstuhly.supabase.co; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; object-src 'none'; base-uri 'self';",
             'X-Content-Type-Options': 'nosniff',
             'X-Frame-Options': 'SAMEORIGIN',
         });
@@ -53,4 +53,4 @@ const server = http.createServer((req, res) => {
 
 server.listen(PORT, HOST, () => {
     console.log(`Server running at http://${HOST}:${PORT}`);
-});
+}); 

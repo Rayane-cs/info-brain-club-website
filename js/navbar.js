@@ -1,45 +1,58 @@
 document.addEventListener('DOMContentLoaded', async () => {
   let retries = 0;
-  while (!document.querySelector('.nav-logos-left') && retries < 50) {
+  while (!document.querySelector('.nav-logos-left') && !document.querySelector('.mobile-nav') && retries < 50) {
     await new Promise(r => setTimeout(r, 100));
     retries++;
   }
-  _initMobileMenu();
-  await _renderHeaderActions();
+  _initHamburger();
+  _setActiveLinks();
+  await _renderUserActions();
 });
 
-function _initMobileMenu() {
-  const nav = document.querySelector('.nav-links');
-  if (!nav) return;
+function _initHamburger() {
+  const btn      = document.getElementById('hamburgerBtn');
+  const dropdown = document.getElementById('mobileDropdown');
+  if (!btn || !dropdown) return;
 
-  document.addEventListener('click', (e) => {
-    if (!e.target.closest('.navbar')) _closeMenu(nav);
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = dropdown.classList.toggle('open');
+    btn.setAttribute('aria-expanded', isOpen);
+    dropdown.setAttribute('aria-hidden', !isOpen);
   });
 
-  nav.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => _closeMenu(nav));
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.mobile-header')) _closeDropdown(btn, dropdown);
   });
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') _closeMenu(nav);
+    if (e.key === 'Escape') _closeDropdown(btn, dropdown);
+  });
+
+  dropdown.querySelectorAll('.mobile-dropdown-link').forEach(link => {
+    link.addEventListener('click', () => _closeDropdown(btn, dropdown));
   });
 }
 
-function _closeMenu(nav) {
-  nav.classList.remove('active');
-  document.body.classList.remove('nav-open');
+function _closeDropdown(btn, dropdown) {
+  dropdown.classList.remove('open');
+  btn.setAttribute('aria-expanded', 'false');
+  dropdown.setAttribute('aria-hidden', 'true');
 }
 
-const SVG = {
-  profile:  `<svg class="nav-mobile-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>`,
-  admin:    `<svg class="nav-mobile-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`,
-  guest:    `<svg class="nav-mobile-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/><line x1="17" y1="3" x2="21" y2="7"/><line x1="21" y1="3" x2="17" y2="7"/></svg>`,
-  signout:  `<svg class="nav-mobile-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>`,
-};
+function _setActiveLinks() {
+  const path = window.location.pathname;
+  document.querySelectorAll('.nav-links a, .mobile-dropdown-link').forEach(a => {
+    const href = a.getAttribute('href');
+    if (href && path.endsWith(href.split('/').pop())) {
+      a.classList.add('active');
+    }
+  });
+}
 
-async function _renderHeaderActions() {
-  const container = document.getElementById('header-actions');
-  if (!container) return;
+async function _renderUserActions() {
+  const desktopSlot = document.getElementById('header-actions');
+  const mobileSlot  = document.getElementById('mobileUserLinks');
 
   let user    = null;
   let isGuest = false;
@@ -56,18 +69,22 @@ async function _renderHeaderActions() {
   }
 
   if (isGuest) {
-    container.innerHTML = `
-      <div class="nav-user-actions">
-        <span class="nav-guest-badge">
-          ${SVG.guest}
-          <span class="nav-item-label">Guest</span>
-        </span>
-        <button class="nav-signout-guest" id="guestSignOutBtn">
-          ${SVG.signout}
-          <span class="nav-item-label">Sign out</span>
-        </button>
-      </div>`;
-    document.getElementById('guestSignOutBtn')?.addEventListener('click', _handleSignOutGuest);
+    if (desktopSlot) {
+      desktopSlot.innerHTML = `
+        <div class="nav-user-actions">
+          <span class="nav-guest-badge">
+            <span class="nav-item-label">Guest</span>
+          </span>
+          <button class="nav-signout-guest" id="guestSignOutDesktop">Sign out</button>
+        </div>`;
+      document.getElementById('guestSignOutDesktop')?.addEventListener('click', _signOutGuest);
+    }
+    if (mobileSlot) {
+      mobileSlot.innerHTML = `
+        <span class="mobile-dropdown-link guest-label">Guest</span>
+        <button class="mobile-dropdown-btn" id="guestSignOutMobile">Sign out</button>`;
+      document.getElementById('guestSignOutMobile')?.addEventListener('click', _signOutGuest);
+    }
     return;
   }
 
@@ -95,29 +112,32 @@ async function _renderHeaderActions() {
          ><span class="nav-avatar-initials" style="display:none">${escapeHtml(initials)}</span>`
       : `<span class="nav-avatar-initials">${escapeHtml(initials)}</span>`;
 
-    container.innerHTML = `
-      <div class="nav-user-actions">
-        <a href="/pages/profile.html" class="nav-profile-link" title="Profile">
-          <span class="nav-avatar">${avatarHtml}</span>
-          <span class="nav-item-label">Profile</span>
-        </a>
-        ${isAdmin
-          ? `<a href="/pages/admin.html" class="nav-admin-link" title="Admin">
-               ${SVG.admin}
-               <span class="nav-item-label">Admin</span>
-             </a>`
-          : ''}
-        <button class="nav-signout-btn" id="signOutBtn" title="Sign out">
-          ${SVG.signout}
-          <span class="nav-item-label">Sign out</span>
-        </button>
-      </div>`;
+    if (desktopSlot) {
+      desktopSlot.innerHTML = `
+        <div class="nav-user-actions">
+          <a href="/pages/profile.html" class="nav-profile-link" title="Profile">
+            <span class="nav-avatar">${avatarHtml}</span>
+            <span class="nav-item-label">Profile</span>
+          </a>
+          ${isAdmin ? `<a href="/pages/admin.html" class="nav-admin-link" title="Admin"><span class="nav-item-label">Admin</span></a>` : ''}
+          <button class="nav-signout-btn" id="signOutDesktop" title="Sign out">
+            <span class="nav-item-label">Sign out</span>
+          </button>
+        </div>`;
+      document.getElementById('signOutDesktop')?.addEventListener('click', _signOut);
+    }
 
-    document.getElementById('signOutBtn')?.addEventListener('click', _handleSignOut);
+    if (mobileSlot) {
+      mobileSlot.innerHTML = `
+        <a href="/pages/profile.html" class="mobile-dropdown-link">Profile</a>
+        ${isAdmin ? `<a href="/pages/admin.html" class="mobile-dropdown-link admin-link">Admin</a>` : ''}
+        <button class="mobile-dropdown-btn" id="signOutMobile">Sign out</button>`;
+      document.getElementById('signOutMobile')?.addEventListener('click', _signOut);
+    }
   }
 }
 
-async function _handleSignOut() {
+async function _signOut() {
   try {
     const client = await getSupabaseClient();
     await client.auth.signOut();
@@ -126,7 +146,7 @@ async function _handleSignOut() {
   window.location.href = '/index.html';
 }
 
-function _handleSignOutGuest() {
+function _signOutGuest() {
   localStorage.removeItem('currentUser');
   window.location.href = '/index.html';
 }

@@ -70,7 +70,7 @@
       taken = typeof ev.regis_user === 'number' ? ev.regis_user : 0;
       setSeatsUI(taken, total);
 
-      // Check if user is already registered
+      // check if user is already registered
       const { data: { user } } = await client.auth.getUser();
       if (user) {
         const { count } = await client
@@ -91,7 +91,7 @@
       return;
     }
 
-    /* ── REGISTER ── */
+    // register for event
     regBtn?.addEventListener('click', async () => {
       const allowed = await redirectIfGuest();
       if (!allowed) return;
@@ -143,7 +143,7 @@
       }
     });
 
-    /* ── CANCEL REGISTRATION ── */
+    // CANCEL REGISTRATION
     cancelBtn?.addEventListener('click', async () => {
       if (!confirm('Cancel your registration for this event?')) return;
       cancelBtn.disabled = true;

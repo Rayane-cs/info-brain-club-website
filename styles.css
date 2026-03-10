@@ -124,6 +124,7 @@ body {
     background: rgba(255, 255, 255, 0.95);
     --webkit-backdrop-filter: blur(10px);
     padding: 3rem;
+    margin: auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -135,6 +136,7 @@ body {
 .form-container {
     width: 100%;
     max-width: 440px;
+    padding: inherit;
 }
 
 .page-title {

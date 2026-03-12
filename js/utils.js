@@ -6,11 +6,6 @@ const CONFIG = {
     'https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.js'
   ]
 };
-const si = document.createElement('script');
-si.defer = true;
-si.src = 'https://cdn.vercel-insights.com/v1/speed-insights/script.js';
-document.head.appendChild(si);
-
 let _client = null;
 let _loadPromise = null;
 
